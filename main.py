@@ -4,7 +4,7 @@ import json
 def main():
     
     # Enter the path of the AnalyzeDocResponsejson or the Textractdumpresponse They are the same thing!
-    response = open("documentsarisverballesson.pdf_Job.json")  
+    response = open("//PATH TO A JSON FILE")  
     data = json.load(response)
 
     # Creating instance of TRP Document
