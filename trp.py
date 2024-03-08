@@ -42,6 +42,8 @@ class Polygon:
     def y(self):
         return self._y
 
+
+
 class Geometry:
     def __init__(self, geometry):
         boundingBox = geometry["BoundingBox"]
