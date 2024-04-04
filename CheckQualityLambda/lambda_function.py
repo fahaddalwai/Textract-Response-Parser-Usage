@@ -93,7 +93,7 @@ def lambda_handler(event, context):
                 if height > min_height and width > min_width and dpi >= min_dpi:
                     if abs(skewness) > 90 - max_skewness and abs(skewness) < 90 + max_skewness:
                         # Upload the processed image to S3 in the "documents/" folder
-                        s3.put_object(Bucket='sheetstore', Key='documents/{}'.format(name), Body=dec)
+                        s3.put_object(Bucket='#YOURBUCKETNAME', Key='documents/{}'.format(name), Body=dec)
                         
                         # Print a success message
                         print(f"Image uploaded successfully. Name: {name}, Height: {height}, Width: {width}, DPI: {dpi}, Skewness: {skewness_str}")
