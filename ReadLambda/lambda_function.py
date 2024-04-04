@@ -111,7 +111,7 @@ def lambda_handler(event, _):
                 # Continue with text extraction processing
                 textract.start_document_analysis(
                     DocumentLocation={"S3Object": {"Bucket": bucket, "Name": key}},
-                    JobTag=key.replace("/", "aris") + "_Job",
+                    JobTag=key.replace("/", "#YOURWORD") + "_Job",
                     FeatureTypes=["FORMS", "TABLES"],
                     NotificationChannel={
                         "RoleArn": os.environ["SNSROLEARN"],
