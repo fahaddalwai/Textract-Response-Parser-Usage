@@ -12,10 +12,10 @@ s3 = boto3.client("s3")
 
 
 
-user_name = "admin"
-password = "alejandro"
-rds_proxy_host = "proxy-1709461494239-mysqlforlambda.proxy-chgjhfwkta1o.us-east-2.rds.amazonaws.com"
-db_name = "textractDB"
+user_name = "SQLUserName"
+password = "SQLPassword"
+rds_proxy_host = "RDS PROXY ANS"
+db_name = "Name of DB"
 
 try:
         conn = pymysql.connect(host=rds_proxy_host, user=user_name, passwd=password, db=db_name, connect_timeout=5)
@@ -102,11 +102,7 @@ def lambda_handler(event, context):
                             row_data.append(cell.text)
                         document_data[page_key]["tables"][table_key].append(row_data)
                     
-
-                    
-
-        
-        
+         
                     #code to store in the sql
                     if table_idx==0:
                         # Loop through rows and cells to collect the data
@@ -146,18 +142,11 @@ def lambda_handler(event, context):
                         select_all_from_table(conn,'prompts')
                     
 
-                
-                keys = ["DATE", "LESSON TITLE", "LESSON NUMBER", "STUDENT'S NAME","Notes"]
-                for key in keys:
-                    field = page.form.getFieldByKey(key)
-                    if field and field.value is not None:
-                        print("Field: Key: {}, Value: {}".format(field.key, field.value))
-                        document_data[page_key]["key_data"][key] = field.value.text   
-                        
+                                
                         
                     
                 # Search fields by key
-                keys = ["Date:", "Time Started:", "Time Finished:", "Staff Initials:", "% Correct", "Notes:"]
+                keys = ["Any Key", "Can be multiple keys too!"]
                 for key in keys:
                     fields = page.form.searchFieldsByKey(key)
             
@@ -171,27 +160,7 @@ def lambda_handler(event, context):
                             # Append the searched field value to the list
                             if field.value.text is not None:
                                 document_data[page_key]["key_table_3_data"][key].append(field.value.text)
-           
-                    
-                    
-                    
-                    
-                    
 
-                print(document_data)
-                keys = ["DATE", "LESSON TITLE", "ESSON NUMBER", "STUDENT'S NAME"]
-                row_data = []
-                
-                
-                
-                for key in keys:
-                    field = page.form.getFieldByKey(key)
-                    if field and field.value is not None:
-                        row_data.append(field.value.text)
-                    else:
-                        row_data.append("")
-                
-                #insert_data_vocab_based_lesson(conn,row_data)
                 select_all_from_table(conn,'vocab_based_lesson')
         # Convert the HashMap to JSON
             json_formatted_result = json.dumps(document_data, indent=2)
