@@ -4,7 +4,7 @@ from trp import Document
 import pymysql
 import sys
 import os
-from database_utils import insert_data_table2,select_all_from_table,insert_data_prompts, insert_data_table1, insert_data_vocab_based_lesson
+from database_utils import insert_data_table2,select_all_from_table
 
 
 
@@ -66,10 +66,10 @@ def lambda_handler(event, context):
         
         print(json_result)
         
-        contains_aris = 'aris' in json_result
+        contains_keyword = 'PICK YOUR KEYWORD' in json_result
         
-        if contains_aris:
-            s3_bucket = "sheetstore"
+        if contains_keyword:
+            s3_bucket = "S3 Bucket Name"
             s3_key = "json/" + pdfTextExtractionJobTag+".json"
             s3.put_object(Body=json_result.encode('utf-8'), Bucket=s3_bucket, Key=s3_key)
     
@@ -117,34 +117,9 @@ def lambda_handler(event, context):
                     
                         select_all_from_table(conn,'table1')
                         
-                    elif table_idx == 1:  
-                        # Loop through rows and cells to collect the data
-                        for r, row in enumerate(table.rows):
-                            row_data = []
-                            for c, cell in enumerate(row.cells):
-                                row_data.append(cell.text)
-                        
-                            # Insert each row into the MySQL table
-                            #insert_data_table2(conn, row_data)
                     
                         select_all_from_table(conn,'table2')
-                        
-                    elif (table_idx == 2 or table_idx==3 or table_idx==4): 
-                        # Loop through rows and cells to collect the data
-                        for r, row in enumerate(table.rows):
-                            row_data = []
-                            for c, cell in enumerate(row.cells):
-                                row_data.append(cell.text)
-                        
-                            # Insert each row into the MySQL table
-                            #insert_data_prompts(conn, row_data)
-                    
-                        select_all_from_table(conn,'prompts')
-                    
-
-                                
-                        
-                    
+ 
                 # Search fields by key
                 keys = ["Any Key", "Can be multiple keys too!"]
                 for key in keys:
@@ -164,14 +139,14 @@ def lambda_handler(event, context):
                 select_all_from_table(conn,'vocab_based_lesson')
         # Convert the HashMap to JSON
             json_formatted_result = json.dumps(document_data, indent=2)
-            s3_bucket = "sheetstore"
+            s3_bucket = "S3 Bucket Name"
             s3_key = "formattedJSON/" + pdfTextExtractionJobTag+".json"
             s3.put_object(Body=json_formatted_result.encode('utf-8'), Bucket=s3_bucket, Key=s3_key)                
                         
                 
         else:
             # Return an error if the field is not found
-            print("Error: Field with keyword aris not found.")
+            print("Error: Field with keyword not found.")
             return {
                 'statusCode': 400,
                 'body': json.dumps('Wrong Document type entered')
