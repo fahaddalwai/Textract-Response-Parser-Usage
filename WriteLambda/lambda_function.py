@@ -4,13 +4,11 @@ from trp import Document
 import pymysql
 import sys
 import os
-from database_utils import insert_data_table2,select_all_from_table
+from database_utils import insert_data_table,select_all_from_table
 
 
 
 s3 = boto3.client("s3")
-
-
 
 user_name = "SQLUserName"
 password = "SQLPassword"
