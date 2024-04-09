@@ -27,8 +27,6 @@ def get_dpi(image):
     height, width = image.shape[:2]
     return (height/width)*100
 
-
-
 def skew_angle_hough_transform(image):
     
     # Apply Canny edge detection
@@ -84,9 +82,9 @@ def lambda_handler(event, context):
                 skewness = skew_angle_hough_transform(gray_image)
 
                 # Threshold values, modify as required
-                min_height = 600  # in pixels
-                min_width = 600   # in pixels
-                max_skewness = 10  # in degrees
+                min_height = 700  # in pixels
+                min_width = 700   # in pixels
+                max_skewness = 5  # in degrees
                 min_dpi = 120   # dots per inch
 
                 skewness_str = str(skewness)
