@@ -1,6 +1,6 @@
-<h1 align="center" id="title">Textract Response Parser</h1>
+<h1 align="center" id="title">Textractify-PDF to RDS</h1>
 
-<p align="center"><img src="https://socialify.git.ci/fahaddalwai/Textract-Response-Parser-Usage/image?font=Inter&amp;forks=1&amp;language=1&amp;logo=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQghwiHvCWRk0ONHC88_WFbL4JEwCVogNRv2QcSa2NddA%26s&amp;name=1&amp;owner=1&amp;stargazers=1&amp;theme=Light" alt="project-image"></p>
+<p align="center"><img src="https://socialify.git.ci/fahaddalwai/Textractify/image?forks=1&amp;language=1&amp;logo=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcS8eApmowWup45_PzJojSQvmqViTJhpK_J38G5SFcOdmg%26s&amp;name=1&amp;owner=1&amp;stargazers=1&amp;theme=Light" alt="project-image"></p>
 
 <p id="description">A project using AWS Textract to extract text from multi-page PDF documents and insert into a database. Firstly validates the document in the S3 bucket and checks rotation, height, width, etc. and sends the job to AWS Textract. The resulting JSON containing the tables and key-values is cleaned and inserted into an SQL database. Viola!</p>
 
