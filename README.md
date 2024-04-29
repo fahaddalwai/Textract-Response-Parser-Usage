@@ -32,9 +32,11 @@ Here're some of the best features:
 
 <h2>🍰 Contribution Guidelines:</h2>
 
-Contributions are what make the open source community such an amazing place to learn inspire and create. Any contributions you make are greatly appreciated. If you have a suggestion that would make this better please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Make Pull requests which improve the functionality of the application in any sorts. It should conform with the following conditions:
 
-  
+*   Clear, short, crisp description of the PR.
+*   Should add on to the value of the application.
+
   
 <h2>💻 Built with</h2>
 
